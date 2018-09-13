@@ -1,3 +1,6 @@
+# 变更
+解决获取sentry metadata title字段异常。当前已event.project 作为title
+
 # Sentry-DingDing
 
 `Sentry`的`钉钉`通知插件
@@ -7,6 +10,7 @@
 ```bash
 $ pip install sentry-dingding
 ```
+
 
 ## 使用
 
