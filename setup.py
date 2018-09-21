@@ -1,35 +1,42 @@
 #!/usr/bin/env python
+"""
+sentry-dingding
+==============
+
+An extension for Sentry which integrates with DingDing. It will forwards
+notifications to an dingding room.
+"""
 from setuptools import setup, find_packages
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+install_requires = [
+    'sentry>=6.0.0',
+]
 
 setup(
-    name="sentry-dingding",
-    version='1.0.1',
-    author='panchao',
-    author_email='panchao@gcoohua.com',
-    url='https://gitlab.coohua.com/data/sentry-dingding',
-    description='A Sentry extension which send errors stats to DingDing',
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    license='MIT',
-    keywords='sentry dingding',
-    include_package_data=True,
+    name='sentry-dingding',
+    version='0.1.2',
+    author='Zhang Yunyu',
+    author_email='leanderztj@gmail.com',
+    url='https://github.com/L3T/sentry-dingding',
+    description='A Sentry extension which integrates with DingDing.',
+    long_description=__doc__,
+    packages=find_packages(exclude=['tests']),
     zip_safe=False,
-    package_dir={'': 'src'},
-    packages=find_packages('src'),
-    install_requires=[
-        'sentry>=9.0.0',
-        'requests',
-    ],
+    install_requires=install_requires,
+    include_package_data=True,
     entry_points={
+        'sentry.apps': [
+            'sentry_dingding = sentry_dingding ',
+        ],
         'sentry.plugins': [
-            'sentry_dingding = sentry_dingding.plugin:DingDingPlugin'
-        ]
+            'dingding = sentry_dingding.models:DingDingMessage',
+         ],
     },
     classifiers=[
-        'Programming Language :: Python :: 2.7',
-        "License :: OSI Approved :: MIT License",
-    ]
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'Intended Audience :: System Administrators',
+        'Operating System :: OS Independent',
+        'Topic :: Software Development'
+    ],
 )
